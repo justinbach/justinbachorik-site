@@ -1,390 +1,222 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
 ---
-
-<Layout>
-  <!-- Navigation -->
-  <nav class="sticky top-0 z-50 bg-slate-900 border-b border-slate-800">
-    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-end">
-      <div class="flex items-center gap-5 text-sm text-slate-400">
-        <a href="#about" class="hover:text-white transition-colors">About</a>
-        <a href="#experience" class="hover:text-white transition-colors">Experience</a>
-        <a href="#speaking" class="hover:text-white transition-colors">Speaking</a>
-        <a href="#research" class="hover:text-white transition-colors">Research</a>
-        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Justin Bachorik — Software engineering leader, jazz pianist, and Oxford comma advocate." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+    <title>Justin Bachorik</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body { background: #F7F5F0; color: #1C1917; font-family: 'Inter', sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; }
+      nav { position: sticky; top: 0; z-index: 50; background: #F7F5F0; border-bottom: 1px solid #E7E3DB; }
+      nav .inner { max-width: 52rem; margin: 0 auto; padding: 0 1.5rem; height: 3.5rem; display: flex; align-items: center; justify-content: flex-end; gap: 1.75rem; }
+      nav a { font-size: 0.8125rem; color: #78716C; text-decoration: none; letter-spacing: 0.01em; }
+      nav a:hover { color: #1C1917; }
+      section, footer { max-width: 52rem; margin: 0 auto; padding: 0 1.5rem; }
+      .hero { padding-top: 5rem; padding-bottom: 5rem; }
+      @media (min-width: 768px) { .hero { padding-top: 7rem; padding-bottom: 7rem; } }
+      .hero-inner { display: flex; align-items: center; gap: 3rem; }
+      @media (max-width: 640px) { .hero-inner { flex-direction: column; align-items: flex-start; } }
+      h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; line-height: 1.05; color: #1C1917; }
+      .hero-sub { margin-top: 1.25rem; font-size: 1rem; color: #A8A29E; font-weight: 300; letter-spacing: 0.01em; }
+      .hero-photo { flex-shrink: 0; width: 11rem; height: 11rem; border-radius: 0.75rem; object-fit: cover; }
+      @media (min-width: 768px) { .hero-photo { width: 13rem; height: 13rem; } }
+      .section-wrap { padding-top: 4rem; padding-bottom: 4rem; border-top: 1px solid #E7E3DB; }
+      h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 0.75rem; font-weight: 400; font-style: italic; letter-spacing: 0.08em; text-transform: uppercase; color: #A8A29E; margin-bottom: 2rem; }
+      .about-text { font-size: 1.0625rem; line-height: 1.8; color: #44403C; }
+      .about-text p + p { margin-top: 1.25rem; }
+      .employer { margin-bottom: 2.5rem; }
+      .employer-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.25rem; }
+      .employer-name { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.0625rem; font-weight: 700; color: #1C1917; }
+      .employer-dates { font-size: 0.8125rem; color: #A8A29E; }
+      .employer-title { font-size: 0.8125rem; color: #78716C; margin-bottom: 0.875rem; }
+      .bullets { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+      .bullets li { display: flex; gap: 0.875rem; font-size: 0.875rem; line-height: 1.7; color: #57534E; }
+      .bullet-dot { color: #C8B8A8; flex-shrink: 0; margin-top: 0.1em; }
+      .edu-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; padding: 0.625rem 0; border-bottom: 1px solid #F0EBE4; }
+      .edu-row:first-of-type { border-top: 1px solid #F0EBE4; }
+      .edu-name { font-size: 0.9375rem; font-weight: 500; color: #1C1917; }
+      .edu-degree { font-size: 0.8125rem; color: #A8A29E; }
+      .edu-label { font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: #A8A29E; font-weight: 500; margin: 2rem 0 0.75rem; }
+      .speak-item { padding: 1rem 0; border-bottom: 1px solid #F0EBE4; }
+      .speak-item:first-child { border-top: 1px solid #F0EBE4; }
+      .speak-title { font-size: 0.9375rem; font-weight: 500; color: #1C1917; }
+      .speak-meta { font-size: 0.8125rem; color: #A8A29E; margin-top: 0.2rem; }
+      .pub { margin-bottom: 1.5rem; }
+      .pub-title { font-size: 0.9375rem; font-weight: 500; color: #1C1917; font-style: italic; }
+      .pub-authors { font-size: 0.8125rem; color: #57534E; margin-top: 0.2rem; }
+      .pub-ref { font-size: 0.8125rem; color: #A8A29E; margin-top: 0.15rem; }
+      .pub-ref a { color: #9B7E5E; text-underline-offset: 3px; }
+      .patent { margin-bottom: 1.125rem; }
+      .patent-title { font-size: 0.9375rem; font-weight: 500; color: #1C1917; }
+      .patent-meta { font-size: 0.8125rem; color: #A8A29E; margin-top: 0.15rem; }
+      .contact-wrap { display: flex; flex-wrap: wrap; gap: 1.75rem; }
+      .contact-link { display: flex; align-items: center; gap: 0.625rem; font-size: 0.9375rem; color: #78716C; text-decoration: none; }
+      .contact-link:hover { color: #1C1917; }
+      footer { padding-top: 2.5rem; padding-bottom: 2.5rem; border-top: 1px solid #E7E3DB; }
+      .footer-text { font-size: 0.8125rem; color: #C8B8A8; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="inner">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#speaking">Speaking</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero -->
-  <section class="bg-slate-900 py-24 md:py-36">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex flex-col md:flex-row md:items-center gap-10 md:gap-16">
-        <div class="flex-1">
-          <p class="text-amber-500 text-xs font-semibold tracking-widest uppercase mb-5">
-            Senior Director of Software Engineering
-          </p>
-          <h1
-            class="text-5xl md:text-7xl font-bold text-white leading-tight"
-            style="font-family: 'Playfair Display', Georgia, serif"
-          >
-            Justin<br />Bachorik
-          </h1>
-          <p class="text-slate-400 text-lg mt-6">Capital One &nbsp;·&nbsp; Washington, DC</p>
+    <section class="hero">
+      <div class="hero-inner">
+        <div style="flex:1">
+          <h1>Justin<br />Bachorik</h1>
+          <p class="hero-sub">Software engineering, jazz piano, and Oxford commas.</p>
         </div>
-        <div class="flex-shrink-0">
-          <img
-            src="/headshot.jpeg"
-            alt="Justin Bachorik"
-            class="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover border-4 border-slate-700"
-            loading="eager"
-          />
-        </div>
+        <img src="/headshot.jpeg" alt="Justin Bachorik" class="hero-photo" loading="eager" />
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="py-16 md:py-24 bg-white">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex items-center gap-4 mb-10">
-        <h2 class="text-2xl font-bold text-slate-900 whitespace-nowrap">About</h2>
-        <div class="h-px flex-1 bg-slate-200"></div>
+    <section id="about" class="section-wrap">
+      <h2>About</h2>
+      <div class="about-text">
+        <p>Justin Bachorik leads client platform engineering at Capital One, overseeing the iOS, Android, and Web teams behind the Capital One mobile apps and capitalone.com, as well as the enterprise design system.</p>
+        <p>His background covers 20 years across healthcare, public media, and financial services. Before Capital One, he was Lead Developer at NPR, where he rebuilt NPR.org for the mobile era and led one of the first large-scale React deployments in production. He holds an MS in Computer Science from Yale and a BS in Cognitive Neuroscience from Brown, and spent several years as a researcher studying music and the brain at Harvard Medical School. He also plays jazz piano.</p>
       </div>
-      <div class="space-y-5 text-slate-700 leading-relaxed max-w-3xl">
-        <p>
-          Justin Bachorik leads client platform engineering at Capital One, overseeing the iOS, Android,
-          and Web teams behind the Capital One mobile apps and capitalone.com, as well as the enterprise
-          design system.
-        </p>
-        <p>
-          His background covers 20 years across healthcare, public media, and financial services. Before
-          Capital One, he was Lead Developer at NPR, where he rebuilt NPR.org for the mobile era and led
-          one of the first large-scale React deployments in production. He holds an MS in Computer Science
-          from Yale and a BS in Cognitive Neuroscience from Brown, and spent several years as a researcher
-          studying music and the brain at Harvard Medical School. He also plays jazz piano.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Experience -->
-  <section id="experience" class="py-16 md:py-24 bg-slate-50">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex items-center gap-4 mb-10">
-        <h2 class="text-2xl font-bold text-slate-900 whitespace-nowrap">Experience</h2>
-        <div class="h-px flex-1 bg-slate-200"></div>
-      </div>
+    <section id="experience" class="section-wrap">
+      <h2>Experience</h2>
 
-      <div class="space-y-12">
-
-        <!-- Capital One -->
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-            <h3 class="text-lg font-semibold text-slate-900">Capital One</h3>
-            <span class="text-sm text-slate-500">2017 – Present</span>
-          </div>
-          <p class="text-sm text-slate-500 mb-4">
-            Master Software Engineer (2017) &rarr; Senior Manager (2018) &rarr; Director (2020) &rarr;
-            <strong class="text-slate-700">Senior Director of Software Engineering</strong> (2022 – Present)
-          </p>
-          <ul class="space-y-3 text-slate-700 text-sm leading-relaxed">
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Leads client platform engineering (iOS, Android, Web, and enterprise design system) for Capital One's largest customer-facing experiences; organization of approximately 100 engineers</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Directed complete rearchitecture of Capital One's mobile application to a modular, declarative UI framework, reworking hundreds of features with zero customer impact</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Led company-wide mobile talent transformation (2024–2025), retraining Capital One's mobile engineering workforce on modern frameworks including SwiftUI, Jetpack Compose, and Combine</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Plays a leading role in Capital One's company-wide AI adoption efforts, including speaking at engineering events reaching 10,000+ engineers</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Led platform integration work in support of a major strategic acquisition</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Built and scaled a greenfield platform for secure, identity-linked document storage from a single team to four (API, UI, Integrations, DevOps/SRE); platform served 10M+ documents at peak</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Drove early adoption of Docker, Kubernetes, and microservice architecture at Capital One; led internal seminars and event storming workshops to shift engineering culture around distributed systems</span>
-            </li>
-          </ul>
+      <div class="employer">
+        <div class="employer-header">
+          <span class="employer-name">Capital One</span>
+          <span class="employer-dates">2017 – Present</span>
         </div>
-
-        <!-- NPR -->
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-            <h3 class="text-lg font-semibold text-slate-900">NPR</h3>
-            <span class="text-sm text-slate-500">2013 – 2017</span>
-          </div>
-          <p class="text-sm text-slate-500 mb-4">
-            Contract Developer (2013) &rarr; Senior Developer (2014) &rarr;
-            <strong class="text-slate-700">Lead Developer</strong> (2015 – 2017)
-          </p>
-          <ul class="space-y-3 text-slate-700 text-sm leading-relaxed">
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Led development of NPR.org, serving 100M+ monthly visitors across a national network of hundreds of member stations</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Rebuilt NPR.org as a PJAX-based single-page application with a persistent React/Redux audio player supporting article playlists and live local radio streaming, one of the earliest large-scale React deployments in production; recognized with the NPR Success Award for Innovation (2016)</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Overhauled NPR's podcasting infrastructure during the height of the mid-2010s podcast boom</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Led complete responsive redesign of NPR.org across all page types, and redesigned and rebuilt the NPR Music flagship home page</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- mediaBOOM -->
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-            <h3 class="text-lg font-semibold text-slate-900">mediaBOOM</h3>
-            <span class="text-sm text-slate-500">2008 – 2013</span>
-          </div>
-          <p class="text-sm text-slate-500 mb-4">Senior Interactive Developer</p>
-          <ul class="space-y-3 text-slate-700 text-sm leading-relaxed">
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Built award-winning digital experiences for high-profile clients including David Copperfield, Jim Beam, Hyatt, Guess, and the Cardiovascular Research Foundation</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Led engineering for the agency, standardizing modern software development practices and growing the team</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Work recognized with the FWA Award; agency earned Webby Award recognition in professional services; work featured in New York Magazine</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- BIDMC -->
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-            <h3 class="text-lg font-semibold text-slate-900">Beth Israel Deaconess Medical Center</h3>
-            <span class="text-sm text-slate-500">2006 – 2008</span>
-          </div>
-          <p class="text-sm text-slate-500 mb-4">Research Technician, Department of Neurology &nbsp;·&nbsp; Harvard Medical School</p>
-          <ul class="space-y-3 text-slate-700 text-sm leading-relaxed">
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Conducted MRI-based structural analysis of musicians' brains and behavioral studies of emotional response to music under Dr. Gottfried Schlaug</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Developed web-based clinical software for stroke rehabilitation using Melodic Intonation Therapy, deployed for patient use</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Co-authored peer-reviewed publications in <em>Music Perception</em> and <em>Frontiers in Psychology</em></span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- NIH -->
-        <div>
-          <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
-            <h3 class="text-lg font-semibold text-slate-900">National Institutes of Health</h3>
-            <span class="text-sm text-slate-500">2001 – 2004</span>
-          </div>
-          <p class="text-sm text-slate-500 mb-4">Engineering Intern, Nuclear Medicine Department</p>
-          <ul class="space-y-3 text-slate-700 text-sm leading-relaxed">
-            <li class="flex gap-3">
-              <span class="text-amber-500 flex-shrink-0 mt-0.5 font-bold">—</span>
-              <span>Led development of PACSpack under Dr. Roberto Maass-Moreno, a client/server application for searching, transmitting, and receiving DICOM-formatted medical images across the NIH Clinical Center, connecting PET/CT scanners, image archives, and clinical viewers; deployed and widely adopted across clinical operations</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Education -->
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <h3 class="text-base font-semibold text-slate-500 uppercase tracking-widest whitespace-nowrap">Education</h3>
-            <div class="h-px flex-1 bg-slate-200"></div>
-          </div>
-          <div class="space-y-3 text-sm">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <span class="font-semibold text-slate-900">Yale University</span>
-              <span class="text-slate-500">Master of Science, Computer Science</span>
-            </div>
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <span class="font-semibold text-slate-900">Harvard Extension School</span>
-              <span class="text-slate-500">Computer Science coursework</span>
-            </div>
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <span class="font-semibold text-slate-900">Brown University</span>
-              <span class="text-slate-500">Bachelor of Science, Cognitive Neuroscience</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Speaking -->
-  <section id="speaking" class="py-16 md:py-24 bg-white">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex items-center gap-4 mb-10">
-        <h2 class="text-2xl font-bold text-slate-900 whitespace-nowrap">Speaking</h2>
-        <div class="h-px flex-1 bg-slate-200"></div>
-      </div>
-      <div class="divide-y divide-slate-100">
-
-        <div class="py-5 first:pt-0">
-          <p class="font-medium text-slate-900">Testing Microservices in Node.js</p>
-          <p class="text-sm text-slate-500 mt-0.5">RVA.js &nbsp;·&nbsp; Richmond, VA &nbsp;·&nbsp; 2018</p>
-        </div>
-
-        <div class="py-5">
-          <p class="font-medium text-slate-900">Microservices in Node.js: Practices, Pitfalls, and Prevention</p>
-          <p class="text-sm text-slate-500 mt-0.5">NationJS &nbsp;·&nbsp; Washington, DC &nbsp;·&nbsp; 2017</p>
-        </div>
-
-        <div class="py-5 last:pb-0">
-          <p class="font-medium text-slate-900">Modernizing Legacy Codebases with Redux</p>
-          <p class="text-sm text-slate-500 mt-0.5">ReactNL, Amsterdam (2016) &nbsp;·&nbsp; Reactathon, San Francisco (2017) &nbsp;·&nbsp; React NYC (2017)</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Research -->
-  <section id="research" class="py-16 md:py-24 bg-slate-50">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex items-center gap-4 mb-10">
-        <h2 class="text-2xl font-bold text-slate-900 whitespace-nowrap">Research</h2>
-        <div class="h-px flex-1 bg-slate-200"></div>
+        <p class="employer-title">Master Software Engineer (2017) → Senior Manager (2018) → Director (2020) → Senior Director of Software Engineering (2022 – Present)</p>
+        <ul class="bullets">
+          <li><span class="bullet-dot">·</span><span>Leads client platform engineering (iOS, Android, Web, and enterprise design system) for Capital One's largest customer-facing experiences; organization of approximately 100 engineers</span></li>
+          <li><span class="bullet-dot">·</span><span>Directed complete rearchitecture of Capital One's mobile application to a modular, declarative UI framework, reworking hundreds of features with zero customer impact</span></li>
+          <li><span class="bullet-dot">·</span><span>Led company-wide mobile talent transformation (2024–2025), retraining Capital One's mobile engineering workforce on modern frameworks including SwiftUI, Jetpack Compose, and Combine</span></li>
+          <li><span class="bullet-dot">·</span><span>Plays a leading role in Capital One's company-wide AI adoption efforts, including speaking at engineering events reaching 10,000+ engineers</span></li>
+          <li><span class="bullet-dot">·</span><span>Led platform integration work in support of a major strategic acquisition</span></li>
+          <li><span class="bullet-dot">·</span><span>Built and scaled a greenfield platform for secure, identity-linked document storage from a single team to four (API, UI, Integrations, DevOps/SRE); platform served 10M+ documents at peak</span></li>
+          <li><span class="bullet-dot">·</span><span>Drove early adoption of Docker, Kubernetes, and microservice architecture at Capital One; led internal seminars and event storming workshops to shift engineering culture around distributed systems</span></li>
+        </ul>
       </div>
 
-      <div class="space-y-12">
-
-        <!-- Publications -->
-        <div>
-          <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-6">Publications</h3>
-          <div class="space-y-6">
-            <div>
-              <p class="font-medium text-slate-900">
-                "Emotion in Motion: Investigating the Time-Course of Emotional Judgments of Musical Stimuli"
-              </p>
-              <p class="text-sm text-slate-600 mt-1">
-                Bachorik JP, Bangert M, Loui P, Larke K, Berger J, Rowe R, Schlaug G
-              </p>
-              <p class="text-sm text-slate-500 mt-0.5">
-                <em>Music Perception</em> 26(4): 355–364, 2009
-                &nbsp;·&nbsp;
-                <a
-                  href="https://doi.org/10.1525/mp.2009.26.4.355"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-amber-600 hover:text-amber-700 underline underline-offset-2"
-                >doi:10.1525/mp.2009.26.4.355</a>
-              </p>
-            </div>
-            <div>
-              <p class="font-medium text-slate-900">"Effects of Voice on Emotional Arousal"</p>
-              <p class="text-sm text-slate-600 mt-1">Loui P, Bachorik JP, Li HC, Schlaug G</p>
-              <p class="text-sm text-slate-500 mt-0.5">
-                <em>Frontiers in Psychology</em> 4: 675, 2013
-                &nbsp;·&nbsp;
-                <a
-                  href="https://doi.org/10.3389/fpsyg.2013.00675"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-amber-600 hover:text-amber-700 underline underline-offset-2"
-                >doi:10.3389/fpsyg.2013.00675</a>
-              </p>
-            </div>
-          </div>
+      <div class="employer">
+        <div class="employer-header">
+          <span class="employer-name">NPR</span>
+          <span class="employer-dates">2013 – 2017</span>
         </div>
+        <p class="employer-title">Contract Developer (2013) → Senior Developer (2014) → Lead Developer (2015 – 2017)</p>
+        <ul class="bullets">
+          <li><span class="bullet-dot">·</span><span>Led development of NPR.org, serving 100M+ monthly visitors across a national network of hundreds of member stations</span></li>
+          <li><span class="bullet-dot">·</span><span>Rebuilt NPR.org as a PJAX-based single-page application with a persistent React/Redux audio player supporting article playlists and live local radio streaming, one of the earliest large-scale React deployments in production; recognized with the NPR Success Award for Innovation (2016)</span></li>
+          <li><span class="bullet-dot">·</span><span>Overhauled NPR's podcasting infrastructure during the height of the mid-2010s podcast boom</span></li>
+          <li><span class="bullet-dot">·</span><span>Led complete responsive redesign of NPR.org across all page types, and redesigned and rebuilt the NPR Music flagship home page</span></li>
+        </ul>
+      </div>
 
-        <!-- Patents -->
-        <div>
-          <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-6">Patents</h3>
-          <div class="space-y-5">
-            <div>
-              <p class="font-medium text-slate-900">Time-Based Token Trust Depreciation</p>
-              <p class="text-sm text-slate-500 mt-0.5">US12413576B2 &nbsp;·&nbsp; Granted 2025 &nbsp;·&nbsp; Capital One Services LLC</p>
-            </div>
-            <div>
-              <p class="font-medium text-slate-900">Finite State Machine Driven Workflows</p>
-              <p class="text-sm text-slate-500 mt-0.5">US11010200B2 &nbsp;·&nbsp; Granted 2021 &nbsp;·&nbsp; Capital One Services LLC</p>
-            </div>
-            <div>
-              <p class="font-medium text-slate-900">Object-Level Encryption</p>
-              <p class="text-sm text-slate-500 mt-0.5">US20240235822A1 &nbsp;·&nbsp; Pending &nbsp;·&nbsp; Capital One Services LLC</p>
-            </div>
-          </div>
+      <div class="employer">
+        <div class="employer-header">
+          <span class="employer-name">mediaBOOM</span>
+          <span class="employer-dates">2008 – 2013</span>
         </div>
-
+        <p class="employer-title">Senior Interactive Developer</p>
+        <ul class="bullets">
+          <li><span class="bullet-dot">·</span><span>Built award-winning digital experiences for high-profile clients including David Copperfield, Jim Beam, Hyatt, Guess, and the Cardiovascular Research Foundation</span></li>
+          <li><span class="bullet-dot">·</span><span>Led engineering for the agency, standardizing modern software development practices and growing the team</span></li>
+          <li><span class="bullet-dot">·</span><span>Work recognized with the FWA Award; agency earned Webby Award recognition in professional services; work featured in New York Magazine</span></li>
+        </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 md:py-24 bg-slate-900">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex items-center gap-4 mb-10">
-        <h2 class="text-2xl font-bold text-white whitespace-nowrap">Contact</h2>
-        <div class="h-px flex-1 bg-slate-700"></div>
+      <div class="employer">
+        <div class="employer-header">
+          <span class="employer-name">Beth Israel Deaconess Medical Center</span>
+          <span class="employer-dates">2006 – 2008</span>
+        </div>
+        <p class="employer-title">Research Technician, Department of Neurology · Harvard Medical School</p>
+        <ul class="bullets">
+          <li><span class="bullet-dot">·</span><span>Conducted MRI-based structural analysis of musicians' brains and behavioral studies of emotional response to music under Dr. Gottfried Schlaug</span></li>
+          <li><span class="bullet-dot">·</span><span>Developed web-based clinical software for stroke rehabilitation using Melodic Intonation Therapy, deployed for patient use</span></li>
+          <li><span class="bullet-dot">·</span><span>Co-authored peer-reviewed publications in <em>Music Perception</em> and <em>Frontiers in Psychology</em></span></li>
+        </ul>
       </div>
-      <div class="flex flex-wrap gap-8">
-        <a
-          href="mailto:justinbach@gmail.com"
-          class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-          </svg>
+
+      <div class="employer">
+        <div class="employer-header">
+          <span class="employer-name">National Institutes of Health</span>
+          <span class="employer-dates">2001 – 2004</span>
+        </div>
+        <p class="employer-title">Engineering Intern, Nuclear Medicine Department</p>
+        <ul class="bullets">
+          <li><span class="bullet-dot">·</span><span>Led development of PACSpack under Dr. Roberto Maass-Moreno, a client/server application for searching, transmitting, and receiving DICOM-formatted medical images across the NIH Clinical Center, connecting PET/CT scanners, image archives, and clinical viewers; deployed and widely adopted across clinical operations</span></li>
+        </ul>
+      </div>
+
+      <div class="edu-label">Education</div>
+      <div class="edu-row"><span class="edu-name">Yale University</span><span class="edu-degree">Master of Science, Computer Science</span></div>
+      <div class="edu-row"><span class="edu-name">Harvard Extension School</span><span class="edu-degree">Computer Science coursework</span></div>
+      <div class="edu-row"><span class="edu-name">Brown University</span><span class="edu-degree">Bachelor of Science, Cognitive Neuroscience</span></div>
+    </section>
+
+    <section id="speaking" class="section-wrap">
+      <h2>Speaking</h2>
+      <div class="speak-item"><p class="speak-title">Testing Microservices in Node.js</p><p class="speak-meta">RVA.js · Richmond, VA · 2018</p></div>
+      <div class="speak-item"><p class="speak-title">Microservices in Node.js: Practices, Pitfalls, and Prevention</p><p class="speak-meta">NationJS · Washington, DC · 2017</p></div>
+      <div class="speak-item"><p class="speak-title">Modernizing Legacy Codebases with Redux</p><p class="speak-meta">ReactNL, Amsterdam (2016) · Reactathon, San Francisco (2017) · React NYC (2017)</p></div>
+    </section>
+
+    <section id="research" class="section-wrap">
+      <h2>Research</h2>
+      <div class="edu-label">Publications</div>
+      <div class="pub">
+        <p class="pub-title">"Emotion in Motion: Investigating the Time-Course of Emotional Judgments of Musical Stimuli"</p>
+        <p class="pub-authors">Bachorik JP, Bangert M, Loui P, Larke K, Berger J, Rowe R, Schlaug G</p>
+        <p class="pub-ref"><em>Music Perception</em> 26(4): 355–364, 2009 · <a href="https://doi.org/10.1525/mp.2009.26.4.355" target="_blank" rel="noopener">doi:10.1525/mp.2009.26.4.355</a></p>
+      </div>
+      <div class="pub">
+        <p class="pub-title">"Effects of Voice on Emotional Arousal"</p>
+        <p class="pub-authors">Loui P, Bachorik JP, Li HC, Schlaug G</p>
+        <p class="pub-ref"><em>Frontiers in Psychology</em> 4: 675, 2013 · <a href="https://doi.org/10.3389/fpsyg.2013.00675" target="_blank" rel="noopener">doi:10.3389/fpsyg.2013.00675</a></p>
+      </div>
+      <div class="edu-label">Patents</div>
+      <div class="patent"><p class="patent-title">Time-Based Token Trust Depreciation</p><p class="patent-meta">US12413576B2 · Granted 2025 · Capital One Services LLC</p></div>
+      <div class="patent"><p class="patent-title">Finite State Machine Driven Workflows</p><p class="patent-meta">US11010200B2 · Granted 2021 · Capital One Services LLC</p></div>
+      <div class="patent"><p class="patent-title">Object-Level Encryption</p><p class="patent-meta">US20240235822A1 · Pending · Capital One Services LLC</p></div>
+    </section>
+
+    <section id="contact" class="section-wrap">
+      <h2>Contact</h2>
+      <div class="contact-wrap">
+        <a href="mailto:justinbach@gmail.com" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
           justinbach@gmail.com
         </a>
-        <a
-          href="https://github.com/justinbach"
-          target="_blank"
-          rel="noopener"
-          class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-          </svg>
+        <a href="https://github.com/justinbach" target="_blank" rel="noopener" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
           github.com/justinbach
         </a>
-        <a
-          href="https://www.linkedin.com/in/justin-bachorik-97b4b62b"
-          target="_blank"
-          rel="noopener"
-          class="flex items-center gap-2.5 text-slate-300 hover:text-white transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
+        <a href="https://www.linkedin.com/in/justin-bachorik-97b4b62b" target="_blank" rel="noopener" class="contact-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-slate-950 py-6">
-    <div class="max-w-4xl mx-auto px-6">
-      <p class="text-sm text-slate-600">&copy; {new Date().getFullYear()} Justin Bachorik</p>
-    </div>
-  </footer>
-</Layout>
+    <footer>
+      <p class="footer-text">&copy; {new Date().getFullYear()} Justin Bachorik</p>
+    </footer>
+  </body>
+</html>
