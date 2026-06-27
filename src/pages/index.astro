@@ -12,6 +12,62 @@ import '../styles/global.css';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
     <title>Justin Bachorik</title>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Justin Bachorik",
+      "url": "https://justinbachorik.com",
+      "image": "https://justinbachorik.com/headshot.jpeg",
+      "email": "justinbach@gmail.com",
+      "jobTitle": "Senior Director of Software Engineering",
+      "description": "Justin Bachorik is a software engineering executive at Capital One, where he leads client platform engineering across iOS, Android, and Web for the company's largest customer-facing products. He serves as a company-wide leader in AI-assisted engineering adoption, coaching engineering teams on agentic development and representing Capital One's AI engineering efforts at major internal events. With 20 years of experience across healthcare, public media, and financial services, he previously served as lead developer at NPR, where he led one of the first large-scale React/Redux deployments in production. He holds patents in token security, workflow automation, and encryption, and has co-authored peer-reviewed research in music neuroscience. He holds an MS in Computer Science from Yale and a BS in Cognitive Neuroscience from Brown.",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Capital One",
+        "url": "https://www.capitalone.com"
+      },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Yale University" },
+        { "@type": "CollegeOrUniversity", "name": "Brown University" }
+      ],
+      "knowsAbout": [
+        "AI-assisted software engineering",
+        "agentic AI development",
+        "enterprise AI adoption",
+        "software engineering leadership",
+        "mobile platform engineering",
+        "iOS engineering",
+        "Android engineering",
+        "React",
+        "Redux",
+        "Node.js",
+        "microservices architecture",
+        "distributed systems",
+        "SwiftUI",
+        "Jetpack Compose",
+        "music neuroscience"
+      ],
+      "sameAs": [
+        "https://github.com/justinbach",
+        "https://www.linkedin.com/in/justin-bachorik-97b4b62b"
+      ],
+      "author": [
+        {
+          "@type": "ScholarlyArticle",
+          "name": "Emotion in Motion: Investigating the Time-Course of Emotional Judgments of Musical Stimuli",
+          "url": "https://doi.org/10.1525/mp.2009.26.4.355",
+          "datePublished": "2009",
+          "isPartOf": { "@type": "Periodical", "name": "Music Perception" }
+        },
+        {
+          "@type": "ScholarlyArticle",
+          "name": "Effects of Voice on Emotional Arousal",
+          "url": "https://doi.org/10.3389/fpsyg.2013.00675",
+          "datePublished": "2013",
+          "isPartOf": { "@type": "Periodical", "name": "Frontiers in Psychology" }
+        }
+      ]
+    }</script>
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
@@ -20,15 +76,14 @@ import '../styles/global.css';
       nav .inner { max-width: 52rem; margin: 0 auto; padding: 0 1.5rem; height: 3.5rem; display: flex; align-items: center; justify-content: flex-end; gap: 1.75rem; }
       nav a { font-size: 0.8125rem; color: #78716C; text-decoration: none; letter-spacing: 0.01em; }
       nav a:hover { color: #1C1917; }
-      section, footer { max-width: 52rem; margin: 0 auto; padding: 0 1.5rem; }
-      .hero { padding-top: 5rem; padding-bottom: 5rem; }
+      section { max-width: 52rem; margin: 0 auto; padding: 0 1.5rem; }
+      .hero { padding-top: 5.5rem; padding-bottom: 5rem; }
       @media (min-width: 768px) { .hero { padding-top: 7rem; padding-bottom: 7rem; } }
-      .hero-inner { display: flex; align-items: center; gap: 3rem; }
-      @media (max-width: 640px) { .hero-inner { flex-direction: column; align-items: flex-start; } }
-      h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 700; line-height: 1.05; color: #1C1917; }
-      .hero-sub { margin-top: 1.25rem; font-size: 1rem; color: #A8A29E; font-weight: 300; letter-spacing: 0.01em; }
-      .hero-photo { flex-shrink: 0; width: 11rem; height: 11rem; border-radius: 0.75rem; object-fit: cover; }
-      @media (min-width: 768px) { .hero-photo { width: 13rem; height: 13rem; } }
+      .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+      h1 { font-family: 'Libre Baskerville', Georgia, serif; font-size: clamp(2rem, 8vw, 5.5rem); font-weight: 700; line-height: 1.05; color: #1C1917; }
+      .hero-sub { margin-top: 1.5rem; font-size: 1rem; color: #A8A29E; font-weight: 300; letter-spacing: 0.01em; }
+      .hero-photo { flex-shrink: 0; width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; align-self: flex-start; }
+      @media (min-width: 640px) { .hero-photo { width: 12rem; height: 12rem; border-radius: 0.75rem; align-self: center; } }
       .section-wrap { padding-top: 4rem; padding-bottom: 4rem; border-top: 1px solid #E7E3DB; }
       h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 0.75rem; font-weight: 400; font-style: italic; letter-spacing: 0.08em; text-transform: uppercase; color: #A8A29E; margin-bottom: 2rem; }
       .about-text { font-size: 1.0625rem; line-height: 1.8; color: #44403C; }
@@ -39,8 +94,8 @@ import '../styles/global.css';
       .employer-dates { font-size: 0.8125rem; color: #A8A29E; }
       .employer-title { font-size: 0.8125rem; color: #78716C; margin-bottom: 0.875rem; }
       .bullets { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
-      .bullets li { display: flex; gap: 0.875rem; font-size: 0.875rem; line-height: 1.7; color: #57534E; }
-      .bullet-dot { color: #C8B8A8; flex-shrink: 0; margin-top: 0.1em; }
+      .bullets li { display: flex; gap: 0.875rem; font-size: 0.875rem; line-height: 1.7; color: #78716C; }
+      .bullet-dot { color: #D8CFC4; flex-shrink: 0; margin-top: 0.1em; }
       .edu-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; padding: 0.625rem 0; border-bottom: 1px solid #F0EBE4; }
       .edu-row:first-of-type { border-top: 1px solid #F0EBE4; }
       .edu-name { font-size: 0.9375rem; font-weight: 500; color: #1C1917; }
@@ -61,8 +116,11 @@ import '../styles/global.css';
       .contact-wrap { display: flex; flex-wrap: wrap; gap: 1.75rem; }
       .contact-link { display: flex; align-items: center; gap: 0.625rem; font-size: 0.9375rem; color: #78716C; text-decoration: none; }
       .contact-link:hover { color: #1C1917; }
-      footer { padding-top: 2.5rem; padding-bottom: 2.5rem; border-top: 1px solid #E7E3DB; }
-      .footer-text { font-size: 0.8125rem; color: #C8B8A8; }
+      .contact-section { background: #F0EDE6; margin-top: 0; }
+      .contact-section .section-wrap { background: transparent; }
+      footer { background: #EAE6DE; padding-top: 2rem; padding-bottom: 2rem; border-top: 1px solid #DDD8CE; }
+      footer .inner { max-width: 52rem; margin: 0 auto; padding: 0 1.5rem; }
+      .footer-text { font-size: 0.8125rem; color: #B8AFA4; }
     </style>
   </head>
   <body>
@@ -90,7 +148,7 @@ import '../styles/global.css';
       <h2>About</h2>
       <div class="about-text">
         <p>Justin Bachorik leads client platform engineering at Capital One, overseeing the iOS, Android, and Web teams behind the Capital One mobile apps and capitalone.com, as well as the enterprise design system.</p>
-        <p>His background covers 20 years across healthcare, public media, and financial services. Before Capital One, he was Lead Developer at NPR, where he rebuilt NPR.org for the mobile era and led one of the first large-scale React deployments in production. He holds an MS in Computer Science from Yale and a BS in Cognitive Neuroscience from Brown, and spent several years as a researcher studying music and the brain at Harvard Medical School. He also plays jazz piano.</p>
+        <p>His background in software engineering covers 20 years across healthcare, public media, and financial services. Before Capital One, he served as lead developer at NPR, where he rebuilt NPR.org for the mobile era and led one of the first large-scale React deployments in production. He holds an MS in Computer Science from Yale and a BS in Cognitive Neuroscience from Brown, and spent several years as a researcher studying music and the brain at Harvard Medical School. He also plays jazz piano.</p>
       </div>
     </section>
 
@@ -102,15 +160,15 @@ import '../styles/global.css';
           <span class="employer-name">Capital One</span>
           <span class="employer-dates">2017 – Present</span>
         </div>
-        <p class="employer-title">Master Software Engineer (2017) → Senior Manager (2018) → Director (2020) → Senior Director of Software Engineering (2022 – Present)</p>
+        <p class="employer-title">Master Software Engineer (2017) → Senior Manager (2018) → Director (2020) → Senior Director (2022 – Present)</p>
         <ul class="bullets">
           <li><span class="bullet-dot">·</span><span>Leads client platform engineering (iOS, Android, Web, and enterprise design system) for Capital One's largest customer-facing experiences; organization of approximately 100 engineers</span></li>
+          <li><span class="bullet-dot">·</span><span>Serves as a company-wide leader in Capital One's AI adoption efforts — coaching 20+ engineering teams on agentic development, emceeing and speaking at major internal events, and moderating senior leadership panels on the role of AI in software engineering</span></li>
+          <li><span class="bullet-dot">·</span><span>Currently leading platform integration in support of a major strategic acquisition</span></li>
           <li><span class="bullet-dot">·</span><span>Directed complete rearchitecture of Capital One's mobile application to a modular, declarative UI framework, reworking hundreds of features with zero customer impact</span></li>
           <li><span class="bullet-dot">·</span><span>Led company-wide mobile talent transformation (2024–2025), retraining Capital One's mobile engineering workforce on modern frameworks including SwiftUI, Jetpack Compose, and Combine</span></li>
-          <li><span class="bullet-dot">·</span><span>Plays a leading role in Capital One's company-wide AI adoption efforts, including speaking at engineering events reaching 10,000+ engineers</span></li>
-          <li><span class="bullet-dot">·</span><span>Led platform integration work in support of a major strategic acquisition</span></li>
           <li><span class="bullet-dot">·</span><span>Built and scaled a greenfield platform for secure, identity-linked document storage from a single team to four (API, UI, Integrations, DevOps/SRE); platform served 10M+ documents at peak</span></li>
-          <li><span class="bullet-dot">·</span><span>Drove early adoption of Docker, Kubernetes, and microservice architecture at Capital One; led internal seminars and event storming workshops to shift engineering culture around distributed systems</span></li>
+          <li><span class="bullet-dot">·</span><span>Drove early adoption of Docker, Kubernetes, and microservice architecture at Capital One; led internal seminars and Event Storming workshops to shift engineering culture around distributed systems</span></li>
         </ul>
       </div>
 
@@ -122,7 +180,7 @@ import '../styles/global.css';
         <p class="employer-title">Contract Developer (2013) → Senior Developer (2014) → Lead Developer (2015 – 2017)</p>
         <ul class="bullets">
           <li><span class="bullet-dot">·</span><span>Led development of NPR.org, serving 100M+ monthly visitors across a national network of hundreds of member stations</span></li>
-          <li><span class="bullet-dot">·</span><span>Rebuilt NPR.org as a PJAX-based single-page application with a persistent React/Redux audio player supporting article playlists and live local radio streaming, one of the earliest large-scale React deployments in production; recognized with the NPR Success Award for Innovation (2016)</span></li>
+          <li><span class="bullet-dot">·</span><span>Rebuilt NPR.org as a PJAX-based single-page application with a persistent React/Redux audio player supporting article playlists and live local radio streaming; recognized with the NPR Success Award for Innovation (2016)</span></li>
           <li><span class="bullet-dot">·</span><span>Overhauled NPR's podcasting infrastructure during the height of the mid-2010s podcast boom</span></li>
           <li><span class="bullet-dot">·</span><span>Led complete responsive redesign of NPR.org across all page types, and redesigned and rebuilt the NPR Music flagship home page</span></li>
         </ul>
@@ -137,7 +195,7 @@ import '../styles/global.css';
         <ul class="bullets">
           <li><span class="bullet-dot">·</span><span>Built award-winning digital experiences for high-profile clients including David Copperfield, Jim Beam, Hyatt, Guess, and the Cardiovascular Research Foundation</span></li>
           <li><span class="bullet-dot">·</span><span>Led engineering for the agency, standardizing modern software development practices and growing the team</span></li>
-          <li><span class="bullet-dot">·</span><span>Work recognized with the FWA Award; agency earned Webby Award recognition in professional services; work featured in New York Magazine</span></li>
+          <li><span class="bullet-dot">·</span><span>Recognized with the FWA Award; agency earned Webby Award recognition in professional services; featured in New York Magazine</span></li>
         </ul>
       </div>
 
@@ -161,7 +219,7 @@ import '../styles/global.css';
         </div>
         <p class="employer-title">Engineering Intern, Nuclear Medicine Department</p>
         <ul class="bullets">
-          <li><span class="bullet-dot">·</span><span>Led development of PACSpack under Dr. Roberto Maass-Moreno, a client/server application for searching, transmitting, and receiving DICOM-formatted medical images across the NIH Clinical Center, connecting PET/CT scanners, image archives, and clinical viewers; deployed and widely adopted across clinical operations</span></li>
+          <li><span class="bullet-dot">·</span><span>Led development of PACSpack under Dr. Roberto Maass-Moreno, a client/server application for searching, transmitting, and receiving DICOM-formatted medical images across the NIH Clinical Center, connecting PET/CT scanners, image archives, and clinical viewers; deployed across the NIH Clinical Center</span></li>
         </ul>
       </div>
 
@@ -173,8 +231,8 @@ import '../styles/global.css';
 
     <section id="speaking" class="section-wrap">
       <h2>Speaking</h2>
-      <div class="speak-item"><p class="speak-title">Testing Microservices in Node.js</p><p class="speak-meta">RVA.js · Richmond, VA · 2018</p></div>
-      <div class="speak-item"><p class="speak-title">Microservices in Node.js: Practices, Pitfalls, and Prevention</p><p class="speak-meta">NationJS · Washington, DC · 2017</p></div>
+      <div class="speak-item"><p class="speak-title">Testing Microservices in Node.js</p><p class="speak-meta">RVA.js · Richmond, VA (2018)</p></div>
+      <div class="speak-item"><p class="speak-title">Microservices in Node.js: Practices, Pitfalls, and Prevention</p><p class="speak-meta">NationJS · Washington, DC (2017)</p></div>
       <div class="speak-item"><p class="speak-title">Modernizing Legacy Codebases with Redux</p><p class="speak-meta">ReactNL, Amsterdam (2016) · Reactathon, San Francisco (2017) · React NYC (2017)</p></div>
     </section>
 
@@ -197,6 +255,7 @@ import '../styles/global.css';
       <div class="patent"><p class="patent-title">Object-Level Encryption</p><p class="patent-meta">US20240235822A1 · Pending · Capital One Services LLC</p></div>
     </section>
 
+    <div class="contact-section">
     <section id="contact" class="section-wrap">
       <h2>Contact</h2>
       <div class="contact-wrap">
@@ -214,9 +273,12 @@ import '../styles/global.css';
         </a>
       </div>
     </section>
+    </div>
 
     <footer>
-      <p class="footer-text">&copy; {new Date().getFullYear()} Justin Bachorik</p>
+      <div class="inner">
+        <p class="footer-text">&copy; {new Date().getFullYear()} Justin Bachorik</p>
+      </div>
     </footer>
   </body>
 </html>
